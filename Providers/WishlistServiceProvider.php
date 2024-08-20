@@ -11,6 +11,10 @@ class WishlistServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->mergeConfigFrom(
+            module_path('Wishlist', 'config/settings.php'),
+            'settings'
+        );
         $this->loadMigrations();
     }
 
@@ -20,6 +24,6 @@ class WishlistServiceProvider extends ServiceProvider
 
     private function loadMigrations(): void
     {
-            $this->loadMigrationsFrom(module_path($this->moduleName, 'Migrations'));
+        $this->loadMigrationsFrom(module_path($this->moduleName, 'Migrations'));
     }
 }
